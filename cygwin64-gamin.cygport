@@ -1,0 +1,32 @@
+CROSS_HOST="x86_64-pc-cygwin"
+inherit cross gnome2
+
+NAME="cygwin64-gamin"
+VERSION=0.1.10
+RELEASE=1
+CATEGORY="Devel"
+SUMMARY="FAM for Cygwin 64bit toolchain"
+DESCRIPTION="Gamin is a file and directory monitoring system defined to be
+a subset of the FAM (File Alteration Monitor) system."
+HOMEPAGE="http://people.gnome.org/~veillard/gamin/"
+SRC_URI="http://people.gnome.org/~veillard/gamin/sources/gamin-${VERSION}.tar.gz"
+SRC_DIR="gamin-${VERSION}"
+PATCH_URI="
+	mirror://portage/app-admin/gamin/files/gamin-0.1.9-compile-warnings.patch
+	mirror://portage/app-admin/gamin/files/gamin-0.1.9-freebsd.patch
+	0.1.10-no-undefined.patch
+	0.1.10-check_not_fat.patch
+	0.1.10-poll_timeout.patch
+	0.1.10-cross-compiling.patch
+"
+
+DIFF_EXCLUDES="Makefile"
+
+WANT_AUTOMAKE=1.10
+CPPFLAGS+=" -D_GNU_SOURCE -DG_CONST_RETURN=const"
+CYGCONF_ARGS="
+	--enable-debug-api
+	--disable-server
+	--without-python
+	--without-threads
+"

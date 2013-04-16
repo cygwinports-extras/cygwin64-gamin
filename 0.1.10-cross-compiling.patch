@@ -1,0 +1,10 @@
+--- origsrc/gamin-0.1.10/configure.in	2008-11-24 09:23:06.000000000 -0600
++++ src/gamin-0.1.10/configure.in	2012-05-24 00:10:19.382688000 -0500
+@@ -426,6 +426,7 @@ AC_RUN_IFELSE([AC_LANG_PROGRAM(
+     exit (0);
+ ]])],
+               [have_abstract_sockets=yes],
++              [have_abstract_sockets=no],
+               [have_abstract_sockets=no])
+ AC_LANG_POP(C)
+ AC_MSG_RESULT($have_abstract_sockets)
